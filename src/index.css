@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@layer utilities {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
+
+/* Custom smooth dark scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0f19;
+}
+::-webkit-scrollbar-thumb {
+  background: #2e3856;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Print styles for Certificate & Reports */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  #app-header-bar,
+  #header-btn-sound,
+  #header-btn-instructions,
+  #header-btn-fullscreen,
+  #btn-print-cert,
+  #btn-download-cert,
+  #btn-close-cert,
+  #btn-play-again,
+  #btn-copy-parent-feedback,
+  #btn-review-answers,
+  #btn-download-result,
+  #btn-print-result,
+  footer {
+    display: none !important;
+  }
+
+  #certificate-modal-backdrop {
+    position: static !important;
+    background: transparent !important;
+    padding: 0 !important;
+  }
+
+  #certificate-print-area {
+    margin: 0 !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+
+  @page {
+    size: landscape;
+    margin: 1cm;
+  }
+}
