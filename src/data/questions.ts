@@ -852,7 +852,7 @@ export const QUESTIONS: QuestionItem[] = [
     cueLabel: "(be)",
     segments: [
       { isBlank: true, blankIndex: 0, cue: "be", placeholder: "Was / Were..." },
-      { text: " your teacher at the meeting yesterday? (be)" }
+      { text: " your teacher at the meeting yesterday?" }
     ],
     expectedAnswers: [["was"]],
     spokenSentence: "Blank, your teacher at the meeting yesterday? be.",
@@ -869,7 +869,7 @@ export const QUESTIONS: QuestionItem[] = [
     cueLabel: "(be)",
     segments: [
       { isBlank: true, blankIndex: 0, cue: "be", placeholder: "Was / Were..." },
-      { text: " the children excited about the school trip? (be)" }
+      { text: " the children excited about the school trip?" }
     ],
     expectedAnswers: [["were"]],
     spokenSentence: "Blank, the children excited about the school trip? be.",

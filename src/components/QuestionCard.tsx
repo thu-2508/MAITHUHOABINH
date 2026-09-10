@@ -153,7 +153,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
               }
 
               return (
-                <span key={idx} className="inline-flex flex-col items-center my-1">
+                <span key={idx} className="inline-flex flex-col items-center my-1.5 mt-3">
                   <span className="relative">
                     <input
                       id={`blank-input-${question.id}-${bIndex}`}
@@ -173,13 +173,32 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                       placeholder={seg.placeholder || 'Type here...'}
                       className={`min-w-[130px] sm:min-w-[160px] max-w-[220px] px-3.5 py-2 text-center text-lg sm:text-2xl font-bold rounded-xl border-2 text-cyan-200 placeholder-slate-600 transition-all outline-none ${inputBorder}`}
                     />
-                    {/* Cue badge above or below */}
+                    {/* Verb in brackets with font-size 16 */}
                     {seg.cue && (
-                      <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-purple-900/90 border border-purple-400/40 text-[11px] font-extrabold text-purple-200 rounded-md shadow-sm whitespace-nowrap">
+                      <span className="absolute -top-4 left-1/2 -translate-x-1/2 px-2.5 py-0.5 bg-purple-900/95 border border-purple-400/50 text-[16px] font-bold text-purple-200 rounded-lg shadow-md whitespace-nowrap z-10">
                         ({seg.cue})
                       </span>
                     )}
                   </span>
+                </span>
+              );
+            }
+
+            // If text contains bracketed verb, ensure it also has font size 16
+            if (seg.text && seg.text.includes('(') && seg.text.includes(')')) {
+              const parts = seg.text.split(/(\([^)]+\))/g);
+              return (
+                <span key={idx} className="inline">
+                  {parts.map((part, pIdx) => {
+                    if (part.startsWith('(') && part.endsWith(')')) {
+                      return (
+                        <span key={pIdx} className="text-[16px] font-bold text-purple-300 bg-purple-900/60 px-2 py-0.5 rounded-lg border border-purple-400/40 inline-block align-middle mx-1">
+                          {part}
+                        </span>
+                      );
+                    }
+                    return <span key={pIdx}>{part}</span>;
+                  })}
                 </span>
               );
             }
